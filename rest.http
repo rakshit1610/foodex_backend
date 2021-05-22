@@ -1,0 +1,101 @@
+GET http://localhost:8000/user/bookmarklist/609505a2410bff3a0873256c
+Content-Type: application/json
+
+
+###
+
+POST http://localhost:8000/auth/signup
+Content-Type: application/json
+
+{
+    "email": "jomuj@apple.com",
+    "password": "Iknowman@1"
+}
+###
+
+POST http://localhost:8000/auth/checkOtp
+Content-Type: application/json
+
+{
+    "email": "jomuj@apple.com",
+    "otp": "8727"
+}
+
+###
+
+POST http://localhost:3000/auth/resendOtp
+Content-Type: application/json
+
+{
+    "email": "yooo@apple.com"
+}
+
+###
+
+
+POST http://localhost:3000/auth/sendResetOtp
+Content-Type: application/json
+
+{
+    "email": "eliakim.yony@wifimaple.com"
+}
+
+### 
+
+POST http://localhost:3000/auth/checkResetOtp
+Content-Type: application/json
+
+{
+    "email": "eliakim.yony@wifimaple.com",
+    "otp": "2783"
+}
+
+###
+
+POST http://localhost:3000/auth/resetPassword
+Content-Type: application/json
+
+{
+    "email": "eliakim.yony@wifimaple.com",
+    "newPassword": "newpass"
+}
+###
+
+POST http://localhost:8000/recipe/addRecipe
+Content-Type: application/json
+
+{
+    "title": "Shahi Paneer",
+    "content": "nahi aata banana bola na",
+    "isveg": "true"
+}
+###
+
+GET http://localhost:3000/recipe/getRecipes
+Content-Type: application/json
+
+###
+
+GET http://localhost:3000/recipe/showRecipe
+Content-Type: application/json
+
+{
+    "recipeId": "608186b40a801819881d45f2"
+}
+
+###
+
+PATCH http://localhost:3000/recipe/editRecipe
+Content-Type: application/json
+
+{
+    "recipeId": "608186b40a801819881d45f2",
+    "title": "Tandoori Mirch",
+    "description": "idk how to cook it",
+    "isveg": true
+}
+
+###
+
+DELETE http://localhost:3000/recipe/608186b40a801819881d45f2
+Content-Type: application/json
