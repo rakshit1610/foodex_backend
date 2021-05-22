@@ -125,7 +125,7 @@ exports.profilepicture = (req, res, next) => {
     User.findById(userid)
     .then(result=>{
 
-        result.image_user= 'http://localhost:8000/'+req.file.filename;
+        result.image_user= 'https://nodebackendfoodex.herokuapp.com/'+req.file.filename;
 
         res.json(result);
         return result.save()

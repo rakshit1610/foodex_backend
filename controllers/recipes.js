@@ -26,7 +26,7 @@ exports.addRecipe = (req, res, next) => {
             title: req.body.title,
             content: req.body.content,
             veg: req.body.veg,
-            img: 'http://localhost:8000/'+recipeimg,
+            img: 'https://nodebackendfoodex.herokuapp.com/'+recipeimg,
             read_time: Math.floor(req.body.content.length / 275),
             cook_time: req.body.cook_time,
             category: req.body.category,
