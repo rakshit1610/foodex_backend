@@ -1,11 +1,11 @@
 require('dotenv').config()
 const mongoose = require("mongoose");
 const path = require('path');
-const express= require('express');
+const express= require('express'); 
 const bodyParser = require("body-parser");
 const authRoutes = require("./routes/auth");
 const userRoutes = require("./routes/user");
-const recipeRoutes = require("./routes/recipes");
+const recipeRoutes = require("./routes/recipes"); 
 const app = express();
 
 app.use(bodyParser.urlencoded({ extended: false }));

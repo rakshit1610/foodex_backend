@@ -39,7 +39,7 @@ router.post('/addRecipe',  imageMulter, recipeController.addRecipe)
 
 router.put('/edit', imageMulter, recipeController.editRecipe)
 
-router.delete('/delete/:id', recipeController.deleteRecipe)
+router.delete('/delete/:id/:ownerId', recipeController.deleteRecipe)
 
 router.post('/search', recipeController.search)
 

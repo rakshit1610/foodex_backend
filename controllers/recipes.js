@@ -38,12 +38,18 @@ exports.addRecipe = (req, res, next) => {
         console.log(recipeimg);
         console.log(recipeowner)
 
+
         User.findById(req.body.ownerId)
-        .then(result=>{
-            result.post_count = result.post_count + 1
-            console.log(result.post_count)
-            return User.save()
-        })
+    .then(result=>{
+
+        result.post_count = result.post_count + 1
+
+        console.log(result.post_count)
+        return result.save()
+    })
+    .catch(err=>{
+        console.log(err)
+    })
     
         
 
@@ -146,8 +152,21 @@ exports.editRecipe=(req,res,next)=>{
 
 exports.deleteRecipe = (req, res, next) => {
     const recipeId = req.params.id;
+
+    User.findById(req.params.ownerId)
+    .then(result=>{
+
+        result.post_count = result.post_count - 1
+
+        console.log("delete ho gyi post ct ghata")
+        return result.save()
+    })
+    .catch(err=>{
+        console.log(err)
+    })
+
     Recipe.findOneAndDelete({_id:recipeId})
-    .then((result) => {
+    .then((ans) => {
         res.status(200).json({
           msg: "recipe deleted",
         });
