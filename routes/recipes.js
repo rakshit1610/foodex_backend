@@ -47,6 +47,8 @@ router.post('/sort', recipeController.sort)
 
 router.get('/read/:id/:readerId', recipeController.readRecipe)
 
+router.get('/guestread/:id/', recipeController.guestRead)
+
 router.get('/list/:userId', recipeController.myrecipelist);
 
 router.get('/categories/:type', recipeController.getCategory)

@@ -224,34 +224,41 @@ exports.readRecipe = (req, res, next) => {
         next(err);
 })
 
+}
 
-//     Recipe.findOne({_id:recipeId})
-//     .then((result) => {
-//         if(req.params.readerId==result.ownerId){
-//             result={
-//                 // ...result,
-//                 title: result.title,
-//                 ingredients: result.ingredients,
-//                 content: result.content,
-//                 img: result.img,
-//                 cook_time: result.cook_time,
-//                 owner: result.owner,
-//                 category: result.category,
-//                 veg: result.veg,
-//                 ownerId: result.ownerId,
-//                 ownit: true,
-//                 points: result.likes.length
-//             }
-//         }
-//         console.log(result)
-//         res.json(result);
-//       })
-//       .catch((err) => {
-//         if (!err.statusCode) {
-//           err.statusCode = 500;
-//         }
-//         next(err);
-// })
+exports.guestRead = (req, res, next) => {
+    const recipeId = req.params.id;
+    console.log(recipeId)
+
+    var liked= false;
+
+    Recipe.findById(recipeId)
+    .then(post=>{
+
+       result={ title: post.title,
+                ingredients: post.ingredients,
+                content: post.content,
+                img: post.img,
+                cook_time: post.cook_time,
+                owner: post.owner,
+                category: post.category,
+                veg: post.veg,
+                ownerId: post.ownerId,
+                points: post.likes.length,
+                like_is: false,
+       }
+
+        console.log(result)
+        res.json(result);
+        
+        
+    })
+    .catch((err) => {
+        if (!err.statusCode) {
+          err.statusCode = 500;
+        }
+        next(err);
+})
 
 }
 
