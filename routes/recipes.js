@@ -45,6 +45,8 @@ router.post('/search', recipeController.search)
 
 router.post('/sort', recipeController.sort)
 
+router.post('/suggestion', recipeController.suggestion)
+
 router.get('/read/:id/:readerId', recipeController.readRecipe)
 
 router.get('/guestread/:id/', recipeController.guestRead)

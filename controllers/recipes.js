@@ -1,6 +1,17 @@
 const Recipe = require("../models/recipes")
 const User= require('../models/user')
 
+const Emailsender=require("../utils/suggestionmail");
+const nodemailer = require("nodemailer");
+const sendgridTRansport = require("nodemailer-sendgrid-transport");
+
+const transporter = nodemailer.createTransport(
+    sendgridTRansport({
+      auth: {
+        api_key: process.env.API_KEY
+      }
+    })
+  );
 
 exports.getRecipes = (req, res, next) => {
     Recipe.find()
@@ -9,6 +20,36 @@ exports.getRecipes = (req, res, next) => {
     })
     .catch(err=>{
         console.log(err)
+    })
+}
+
+exports.suggestion=(req,res,next)=>{
+    User.findOne({_id: req.body.ownerpk})
+    .then(ownerrecord=>{
+        User.findOne({_id: req.body.readerpk})
+        .then(readerrecord=>{
+
+            const ownermail= ownerrecord.email;
+            const readername= readerrecord.name;
+            const suggestion= req.body.suggestion;
+            const recipename= req.body.recipename;
+
+
+            console.log(ownermail)
+            console.log(readername)
+            console.log(suggestion)
+            console.log(recipename)
+
+            res.status(200).json({"message":"suggestion sent"});
+
+            return Emailsender.sendemail(ownermail, readername, suggestion, recipename);
+        })
+        .catch(err=>{
+            res.status(500).jon({error: err})
+        })
+    })
+    .catch(err=>{
+        res.status(500).jon({error: err})
     })
 }
 

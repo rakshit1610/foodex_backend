@@ -13,7 +13,7 @@ exports.sendemail=(email,otp) =>{
     transporter.sendMail({
         to: email,
         from: "iokll@wifimaple.com",
-        subject: "Node test",
+        subject: "Foodex",
         html:`<head>
         <!--[if gte mso 9]><xml><o:OfficeDocumentSettings><o:AllowPNG/><o:PixelsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml><![endif]-->
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">

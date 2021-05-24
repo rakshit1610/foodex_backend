@@ -98,7 +98,7 @@ exports.postLogin= (req,res,next)=>{
                     userId: user._id.toString(),
                   },
                   'ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad',
-                  { expiresIn: "6h" }
+                  { expiresIn: "12h" }
                 );
     
                   console.log(accessToken)
@@ -147,7 +147,7 @@ exports.checkOTP = (req, res, next) => {
                   userId: user._id.toString(),
                 },
                 'ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad',
-                { expiresIn: "1h" }
+                { expiresIn: "12h" }
               );
   
                 console.log(accessToken)
