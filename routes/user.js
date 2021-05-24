@@ -33,7 +33,7 @@ router.get('/bookmarklist/:userId', userController.bookmarklist);
 
 router.get('/profile/:celebId/:fanId', userController.otheruser);
 
-router.put('/changeimg/:userId', imageMulter, userController.profilepicture)
+router.put('/changeimg/:userId',  userController.profilepicture)
 
 router.put('/follow', userController.followToggle)
 

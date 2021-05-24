@@ -14,7 +14,6 @@ exports.getRecipes = (req, res, next) => {
 
 exports.addRecipe = (req, res, next) => {
 
-    const recipeimg = req.file.filename;
     var recipeowner;
     const ownerId= req.body.ownerId;
 
@@ -26,7 +25,7 @@ exports.addRecipe = (req, res, next) => {
             title: req.body.title,
             content: req.body.content,
             veg: req.body.veg,
-            img: 'https://nodebackendfoodex.herokuapp.com/'+recipeimg,
+            img: req.body.img,
             read_time: Math.floor(req.body.content.length / 275),
             cook_time: req.body.cook_time,
             category: req.body.category,
@@ -35,7 +34,6 @@ exports.addRecipe = (req, res, next) => {
             owner: recipeowner
         })
     
-        console.log(recipeimg);
         console.log(recipeowner)
 
 
@@ -64,28 +62,6 @@ exports.addRecipe = (req, res, next) => {
       .catch((err) => {
         console.log(err)
     })
-
-    // const recipe= new Recipe({
-    //     title: req.body.title,
-    //     content: req.body.content,
-    //     veg: req.body.veg,
-    //     img: 'http://localhost:8000/'+recipeimg,
-    //     read_time: Math.floor(req.body.content.length / 275),
-    //     cook_time: req.body.cook_time,
-    //     category: req.body.category,
-    //     ingredients: req.body.ingredients,
-    //     owner: recipeowner
-    // })
-
-    // console.log(recipeimg);
-    // console.log(recipeowner)
-
-    // recipe.save().then(result =>{
-    //     console.log(result);
-    //     res.status(201).json({message:'Recipe Created',newRecipe: result})
-    // }).catch(err => {
-    //     console.log(err);
-    // });
 }
 
 exports.showRecipe = (req, res, next) => {
@@ -117,10 +93,7 @@ exports.getCategory = (req, res, next) => {
 
 exports.editRecipe=(req,res,next)=>{
     const recipeId=req.body.recipeId;
-    // console.log(req.body)
 
-
-    // const recipeimg = req.file.filename;
     var recipeowner;
     
     Recipe.findOne({_id: recipeId})
@@ -130,8 +103,8 @@ exports.editRecipe=(req,res,next)=>{
             data.content= req.body.content;
             data.veg= req.body.veg;
             
-            if(req.file){
-            data.img= 'http://localhost:8000/'+req.file.filename;
+            if(req.body.img){
+            data.img= req.body.img;
             }
 
             data.read_time= Math.floor(req.body.content.length / 275);

@@ -31,13 +31,13 @@ const imageMulter = multer({storage:imageStorage,fileFilter:imageFilter}).single
 
 router.get('/getRecipes', recipeController.getRecipes)
 
-router.post('/addRecipe',  imageMulter, recipeController.addRecipe)
+router.post('/addRecipe', recipeController.addRecipe)
 
 // router.post('/addRecipe', recipeController.addRecipe)
 
 // router.get('/showRecipe',  recipeController.showRecipe)
 
-router.put('/edit', imageMulter, recipeController.editRecipe)
+router.put('/edit', recipeController.editRecipe)
 
 router.delete('/delete/:id/:ownerId', recipeController.deleteRecipe)
 
