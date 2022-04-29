@@ -1,18 +1,17 @@
-const sendgridTRansport = require("nodemailer-sendgrid-transport");
-const nodemailer = require("nodemailer");
+var nodemailer = require('nodemailer');
 
-const transporter = nodemailer.createTransport(
-    sendgridTRansport({
-      auth: {
-        api_key: process.env.API_KEY
-      }
-    })
-  );
+var transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: 'foodexweb@gmail.com',
+    pass: 'foodforthought'
+  }
+});
 
 exports.sendemail=(email,otp) =>{
     transporter.sendMail({
         to: email,
-        from: "iokll@wifimaple.com",
+        from: "foodexweb@gmail.com",
         subject: "Foodex",
         html:`<head>
         <!--[if gte mso 9]><xml><o:OfficeDocumentSettings><o:AllowPNG/><o:PixelsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml><![endif]-->
@@ -192,7 +191,7 @@ exports.sendemail=(email,otp) =>{
                                                 <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 35px; padding-left: 35px; padding-top: 10px; padding-bottom: 10px; font-family: Arial, sans-serif"><![endif]-->
                                                 <div style="color:#ffffff;font-family:Nunito, Arial, Helvetica Neue, Helvetica, sans-serif;line-height:1.5;padding-top:10px;padding-right:35px;padding-bottom:10px;padding-left:35px;">
                                                     <div style="line-height: 1.5; font-size: 12px; color: #ffffff; font-family: Nunito, Arial, Helvetica Neue, Helvetica, sans-serif; mso-line-height-alt: 18px;">
-                                                        <p style="line-height: 1.5; word-break: break-word; font-size: 24px; mso-line-height-alt: 36px; margin: 0;"><span style="font-size: 24px;">Node Test</span></p>
+                                                        <p style="line-height: 1.5; word-break: break-word; font-size: 24px; mso-line-height-alt: 36px; margin: 0;"><span style="font-size: 24px;">Foodex</span></p>
                                                     </div>
                                                 </div>
                                                 <!--[if mso]></td></tr></table><![endif]-->
