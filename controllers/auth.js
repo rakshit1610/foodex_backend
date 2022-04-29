@@ -38,7 +38,7 @@ exports.postSignup= (req,res,next)=>{
                 followers:[],
                 followings:[],
                 post_count:0,
-                image_user: 'https://nodebackendfoodex.herokuapp.com/defaultuser.png',
+                image_user: 'https://foodexnode.herokuapp.com/defaultuser.png',
                 bookmarks:[]
             });
             
