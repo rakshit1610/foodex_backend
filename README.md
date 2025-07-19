@@ -1,6 +1,6 @@
 # 🍽️ FoodEx Backend
 
-A Node.js backend API for a recipe sharing and food community platform. Built with Express.js and file-based database for easy demo and development.
+A Node.js backend API for a recipe sharing and food community platform. Built with Express.js and MongoDB. Frontend repo - https://github.com/rakshit1610/foodex-frontend-for-node
 
 ## 📁 Project Structure
 
